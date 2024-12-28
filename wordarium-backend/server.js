@@ -23,10 +23,13 @@ mongoose
   });
 
 
-const corsOptions = {
-  origin: "https://vistoria-frontend.vercel.app/" || "http://localhost:5173",
-  credentials: true,
-};
+  const corsOptions = {
+    origin: process.env.NODE_ENV === "production" 
+      ? "https://vistoria-frontend.vercel.app"
+      : "http://localhost:5173",
+    credentials: true,
+  };
+  
 
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
