@@ -1,6 +1,5 @@
 import NavBar from "../components/NavBar";
 import Header from "../components/Header";
-import Register from "../components/register";
 import YourBlog from "../components/YourBlog";
 import LatestArticles from "../components/LatestArticles";
 import Weekly from "../components/Weekly";
