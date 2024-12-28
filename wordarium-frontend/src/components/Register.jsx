@@ -25,6 +25,7 @@ const Register = () => {
       const reader = new FileReader();
       reader.onload = () => setProfileImage(reader.result);
       reader.readAsDataURL(e.target.files[0]);
+      console.log("File selected for upload:", e.target.files[0]); // Debugging
     }
   };
 
@@ -53,6 +54,7 @@ const Register = () => {
     formData.append("email", email);
     formData.append("password", password);
     if (imageRef.current.files[0]) {
+      console.log("Attaching file to formData:", imageRef.current.files[0]); // Debugging
       formData.append("profileImage", imageRef.current.files[0]);
     }
 
@@ -63,7 +65,7 @@ const Register = () => {
         withCredentials: true,
       });
 
-      if (response.status === 201) {
+      if (response.status === 200) {
         toast.success("User Registered Successfully!");
         resetForm();
       } else {
