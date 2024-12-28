@@ -1,15 +1,12 @@
 const express = require("express");
+const router = express.Router();
 const multer = require("multer");
 const cloudinary = require("../utils/cloudinaryConfig");
-const router = express.Router();
 const Blog = require("../models/blog");
 const Comment = require("../models/comment");
-
-// Multer configuration for memory storage
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// Get a specific blog by ID
 router.get("/:id", async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id).populate("authorObject");
@@ -29,27 +26,23 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// Get all blogs
 
 router.get("/", async (req, res) => {
   try {
-    const { category } = req.query; // Get category from query params
-    const userId = req.user ? req.user.id : null; // Check if user is authenticated
+    const { category } = req.query;
+    const userId = req.user ? req.user.id : null;
 
-    // Build the query object
+
     const query = {};
 
-    // Add category to query if provided
     if (category) {
       query.category = category;
     }
 
-    // Add userId filter if user is authenticated
     if (userId) {
       query.authorObject = userId;
     }
 
-    // Fetch the blogs using the query
     const blogs = await Blog.find(query).populate("authorObject");
 
     if (!blogs || blogs.length === 0) {
@@ -59,10 +52,9 @@ router.get("/", async (req, res) => {
       });
     }
 
-    // Send the successful response with the fetched blogs
     res.status(200).json({
       success: true,
-      user: req.user, // Include user data in the response
+      user: req.user,
       blogs,
     });
   } catch (err) {
@@ -75,7 +67,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Post a new blog
+
 router.post("/", upload.single("coverImage"), async (req, res) => {
   try {
     const { title, content, category, source, description } = req.body;
@@ -141,7 +133,6 @@ router.delete("/delete/:id", async (req, res) => {
   }
 });
 
-// Post a comment on a blog
 router.post("/comment/:blogId", async (req, res) => {
   try {
     const comment = await Comment.create({
@@ -165,7 +156,6 @@ router.post("/comment/:blogId", async (req, res) => {
 
 router.get("/comment/:blogId", async (req, res) => {
   try {
-    // Fetch and sort comments in descending order of creation time
     const comments = await Comment.find({ blogID: req.params.blogId }).sort({ createdAt: -1 });
     console.log(comments);
     

@@ -4,11 +4,11 @@ const path = require("path");
 const Blog = require("./models/blog");
 const userRoutes = require("./routes/userRouter");
 const blogRoutes = require("./routes/blogRouter");
+const newsRoutes = require("./routes/newsRouter");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const checkForAuthCookie = require("./middlewares/auth");
-const { env } = require("process");
 
 const app = express();
 const port = 4002;
@@ -27,7 +27,7 @@ app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
 
 const corsOptions = {
-  origin: "https://newsdata.io/" || "http://localhost:5173",
+  origin: "http://localhost:5173",
   credentials: true,
 };
 
@@ -44,25 +44,10 @@ app.get("/", async (req, res) => {
   res.send({ success: "All User Blogs", Blogs: allBlogs });
 });
 
-app.get("/api/blogs", async (req, res) => {
-  try {
-    const allBlogs = await Blog.find({});
-    res.status(200).json({
-      success: true,
-      user: req.user,
-      blogs: allBlogs,
-    });
-  } catch (err) {
-    res.status(500).json({
-      success: false,
-      message: "Failed to fetch blogs",
-      error: err.message,
-    });
-  }
-});
 
 app.use("/user", userRoutes);
 app.use("/blog", blogRoutes);
+app.use("/news",newsRoutes);
 
 app.listen(port, (err) => {
   if (err) {

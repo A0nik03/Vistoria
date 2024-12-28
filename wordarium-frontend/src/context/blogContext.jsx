@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from "react";
-import axiosB from "../utils/axios";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
@@ -14,36 +13,37 @@ const BlogProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [category, setCategory] = useState("today");
 
-  const proxyUrl = 'https://cors-anywhere.herokuapp.com/';  // CORS Proxy URL
-
   const getMustBlog = async () => {
     try {
-      const response = await axiosB.get(proxyUrl + `https://newsdata.io/api/1/news?q=today&apiKey=your_api_key&language=en`);
+      const response = await axios.get(`http://localhost:4002/news/must-blog`);
+      console.log(response)
       const articles = response.data.articles || [];
-
       const processedArticles = articles
-        .filter(article => 
-          article.author !== null &&
-          article.author !== "[Removed]" &&
-          article.title &&
-          article.title !== "[Removed]" &&
-          article.urlToImage &&
-          article.urlToImage !== "" &&
-          article.content &&
-          article.content !== "[Removed]" &&
-          article.description &&
-          article.description !== "[Removed]" &&
-          article.url
+        .filter(
+          (article) =>
+            article.author !== null &&
+            article.author !== "[Removed]" &&
+            article.title &&
+            article.title !== "[Removed]" &&
+            article.urlToImage &&
+            article.urlToImage !== "" &&
+            article.content &&
+            article.content !== "[Removed]" &&
+            article.description &&
+            article.description !== "[Removed]" &&
+            article.url
         )
-        .map(article => ({
+        .map((article) => ({
           author: article.author || "[No Author]",
           content: article.content || "[Removed]",
           description: article.description || "[Unknown]",
           title: article.title || "[Unknown]",
           publishedAt: article.publishedAt || "[Removed]",
-          source: article.source ? article.source.name || "[Unknown]" : "[Unknown]",
+          source: article.source
+            ? article.source.name || "[Unknown]"
+            : "[Unknown]",
           url: article.url || "[Removed]",
-          urlToImage: article.urlToImage || "[Removed]"
+          urlToImage: article.urlToImage || "[Removed]",
         }));
 
       setMustBlog(processedArticles);
@@ -54,32 +54,35 @@ const BlogProvider = ({ children }) => {
 
   const getWeeklyBlog = async () => {
     try {
-      const response = await axiosB.get(proxyUrl + `https://newsdata.io/api/1/news?q=weekly+highlight&apiKey=your_api_key&language=en`);
+      const response = await axios.get(`http://localhost:4002/news/highlights`);
       const articles = response.data.articles || [];
 
       const processedArticles = articles
-        .filter(article => 
-          article.author !== null &&
-          article.author !== "[Removed]" &&
-          article.title &&
-          article.title !== "[Removed]" &&
-          article.urlToImage &&
-          article.urlToImage !== "" &&
-          article.content &&
-          article.content !== "[Removed]" &&
-          article.description &&
-          article.description !== "[Removed]" &&
-          article.url
+        .filter(
+          (article) =>
+            article.author !== null &&
+            article.author !== "[Removed]" &&
+            article.title &&
+            article.title !== "[Removed]" &&
+            article.urlToImage &&
+            article.urlToImage !== "" &&
+            article.content &&
+            article.content !== "[Removed]" &&
+            article.description &&
+            article.description !== "[Removed]" &&
+            article.url
         )
-        .map(article => ({
+        .map((article) => ({
           author: article.author || "[No Author]",
           content: article.content || "[Removed]",
           description: article.description || "[Unknown]",
           title: article.title || "[Unknown]",
           publishedAt: article.publishedAt || "[Removed]",
-          source: article.source ? article.source.name || "[Unknown]" : "[Unknown]",
+          source: article.source
+            ? article.source.name || "[Unknown]"
+            : "[Unknown]",
           url: article.url || "[Removed]",
-          urlToImage: article.urlToImage || "[Removed]"
+          urlToImage: article.urlToImage || "[Removed]",
         }));
 
       setWeeklyBlog(processedArticles);
@@ -108,25 +111,24 @@ const BlogProvider = ({ children }) => {
     }
   };
 
-  const CommentOnBlog = async (id, commentText) => {
-    if (!token) return;
-    try {
-      const response = await axios.post(
-        `http://localhost:4002/blog/comment/${id}`,
-        { comment: commentText },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          withCredentials: true,
-        }
-      );
-      setComment(response.data);
-      toast.success("Comment added successfully.");
-    } catch (err) {
-      toast.error("Failed to comment on blog. Please try again later.");
-    }
-  };
+  // const CommentOnBlog = async (id) => {
+  //   if (!token) return;
+  //   try {
+  //     const response = await axios.post(
+  //       `http://localhost:4002/blog/comment/${id}`,
+  //       { comment: "This is a comment" },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //         withCredentials: true,
+  //       }
+  //     );
+  //     setComment(response.data)
+  //   } catch (err) {
+  //     toast.error("Failed to comment on blog. Please try again later.");
+  //   }
+  // };
 
   const DeleteUserBlog = async (id) => {
     if (!token) return;
@@ -198,7 +200,6 @@ const BlogProvider = ({ children }) => {
     setToken,
     weeklyBlog,
     getWeeklyBlog,
-    CommentOnBlog
   };
 
   return (

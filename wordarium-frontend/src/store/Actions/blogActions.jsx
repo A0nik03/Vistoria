@@ -2,7 +2,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export { removeBlog } from "../Reducers/blogSlice";
 import axios from "axios";
-import axiosB from "../../utils/axios";
 import { loadBlog } from "../Reducers/blogSlice";
 
 const initialState = {
@@ -10,18 +9,14 @@ const initialState = {
     business: [],
   },
 };
-
 export const asyncFetchBlog = (category) => async (dispatch, getState) => {
   dispatch(loadBlog({ business: [] }));
-
-  const proxyUrl = 'https://cors-anywhere.herokuapp.com/';  // CORS Proxy URL
-  const apiUrl = `https://newsapi.org/v2/everything?q=${category || "today"}&apiKey=e6a4bbbff57d4ecf88e894b70075e7ec`;
 
   try {
     let business = initialState.info.business;
 
     try {
-      const response = await axiosB.get(proxyUrl + apiUrl);
+      const response = await axios.get(`http://localhost:4002/news/latest-articles/${category}`)
 
       if (response.data.articles && Array.isArray(response.data.articles)) {
         business = response.data.articles;
