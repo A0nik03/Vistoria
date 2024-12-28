@@ -27,7 +27,7 @@ app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "https://newsdata.io/" || "http://localhost:5173",
   credentials: true,
 };
 
