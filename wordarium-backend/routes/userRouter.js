@@ -73,9 +73,7 @@ router.post("/login", async (req, res) => {
     return res
       .status(200)
       .cookie("token", token, {
-        httpOnly: false,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: process.env.NODE_ENV === "production" ? "None" : "Strict", 
+        httpOnly: true,
       })
       .json({
         success: true,
