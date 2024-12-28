@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import axios from "../../utils/axios";
+import axios from "../utils/axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 
