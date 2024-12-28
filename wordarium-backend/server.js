@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const checkForAuthCookie = require("./middlewares/auth");
+const { env } = require("process");
 
 const app = express();
 const port = 4002;
@@ -15,9 +16,7 @@ const port = 4002;
 dotenv.config();
 
 mongoose
-  .connect(
-    "mongodb+srv://Nikhil:Nikrcn%40123@wordarium.hkp4t.mongodb.net/?retryWrites=true&w=majority&appName=Vistoria"
-  )
+  .connect(process.env.MONGO_SECRET)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => {
     console.error("MongoDB connection error:", err.message);
