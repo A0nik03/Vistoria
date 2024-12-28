@@ -2,8 +2,8 @@ import React, { useContext, useRef, useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
-import { toast, ToastContainer } from "react-toastify";
-import axios from "../utils/userAxios";
+import { toast} from "react-toastify";
+import axios from "../utils/axios";
 import { AuthContext } from "../context/authContext";
 import NavBar from "./NavBar";
 
