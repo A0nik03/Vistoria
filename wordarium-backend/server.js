@@ -23,10 +23,7 @@ mongoose
   });
 
 const corsOptions = {
-  origin:
-    process.env.NODE_ENV === "production"
-      ? "https://vistoria-frontend.vercel.app"
-      : "http://localhost:5173",
+  origin: "https://vistoria-frontend.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
