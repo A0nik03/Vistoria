@@ -4,7 +4,9 @@ const API_URL = process.env.NODE_ENV === 'production' ? 'https://vistoria-backen
 
 
 const instance = axios.create({
-  baseURL: API_URL});
+  baseURL: API_URL,
+  withCredentials: true,
+});
 
 
 export default instance;
