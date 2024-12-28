@@ -1,17 +1,13 @@
-import { useContext } from "react";
 import BlogDetails from "./components/BlogDetails";
 import FAQ from "./components/FAQ";
 import About from "./pages/About";
 import ContactUs from "./pages/ContactUs";
 import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
-import { AuthContext } from "./context/authContext";
 import SeeAllBlogs from "./components/SeeAllBlogs";
-import Register from "./components/register";
+import Register from "./components/register.jsx";
 
 const App = () => {
-    const { auth, panel, setPanel } = useContext(AuthContext);
-    const access = auth?.token ? true : false;
   return (
     <div className="relative w-screen h-screen font-[Satoshi]">
       <Routes>
