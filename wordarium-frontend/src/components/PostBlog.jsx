@@ -1,5 +1,5 @@
 import React, { useState, useRef, useContext } from "react";
-import axios from "../utils/axios";
+import axios from "../utils/userAxios";
 import { ImCross } from "react-icons/im";
 import { BlogContext } from "../context/blogContext";
 import Dropdown from "react-dropdown";

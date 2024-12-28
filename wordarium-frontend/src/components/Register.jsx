@@ -3,7 +3,7 @@ import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { toast} from "react-toastify";
-import axios from "../utils/axios";
+import axios from "../utils/userAxios";
 import { AuthContext } from "../context/authContext";
 import NavBar from "./NavBar";
 
