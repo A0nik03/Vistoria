@@ -3,14 +3,12 @@ import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaFacebook, FaUserCircle } from "react-icons/fa";
 import { AuthContext } from "../context/authContext";
-import Register from "./register";
 import moment from "moment";
 import Comments from "./Comments";
 import { ToastContainer } from "react-toastify";
 
 const BlogDetails = () => {
-  const { auth, panel, setPanel } = useContext(AuthContext);
-  const access = auth?.token ? true : false;
+  const { auth } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const blogData = location.state?.blogData;
@@ -60,12 +58,6 @@ const BlogDetails = () => {
           </h1>
 
         </div>
-
-        {panel && !access && (
-          <div className="fixed top-0 left-0 w-screen h-screen z-50 flex items-center justify-center bg-black bg-opacity-50">
-            <Register panelFunc={setPanel} panelVal={panel} />
-          </div>
-        )}
 
         <div className="relative z-10 w-full px-5 md:px-20 py-10 flex flex-col lg:flex-row gap-10 pb-40">
           <div className="lg:w-[30%]">
