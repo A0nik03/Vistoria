@@ -27,7 +27,7 @@ app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "http://localhost:5173" || "https://vistoria-frontend.vercel.app/",
   credentials: true,
 };
 
@@ -40,8 +40,7 @@ app.use(checkForAuthCookie("token"));
 app.use(express.static(path.resolve("./public")));
 
 app.get("/", async (req, res) => {
-  const allBlogs = await Blog.find({});
-  res.send({ success: "All User Blogs", Blogs: allBlogs });
+  res.send({ success: "Backend is working"});
 });
 
 
