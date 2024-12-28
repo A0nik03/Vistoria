@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../utils/axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 
@@ -15,7 +15,7 @@ const BlogProvider = ({ children }) => {
 
   const getMustBlog = async () => {
     try {
-      const response = await axios.get(`http://localhost:4002/news/must-blog`);
+      const response = await axios.get(`news/must-blog`);
       console.log(response)
       const articles = response.data.articles || [];
       const processedArticles = articles
@@ -54,7 +54,7 @@ const BlogProvider = ({ children }) => {
 
   const getWeeklyBlog = async () => {
     try {
-      const response = await axios.get(`http://localhost:4002/news/highlights`);
+      const response = await axios.get(`news/highlights`);
       const articles = response.data.articles || [];
 
       const processedArticles = articles
@@ -94,7 +94,7 @@ const BlogProvider = ({ children }) => {
   const GetUserBlogs = async () => {
     if (!token) return;
     try {
-      const response = await axios.get("http://localhost:4002/blog/", {
+      const response = await axios.get("blog/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -134,7 +134,7 @@ const BlogProvider = ({ children }) => {
     if (!token) return;
     try {
       const response = await axios.delete(
-        `http://localhost:4002/blog/delete/${id}`,
+        `blog/delete/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

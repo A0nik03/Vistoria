@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export { removeBlog } from "../Reducers/blogSlice";
-import axios from "axios";
+import axios from "../../utils/axios";
 import { loadBlog } from "../Reducers/blogSlice";
 
 const initialState = {
@@ -16,7 +16,7 @@ export const asyncFetchBlog = (category) => async (dispatch, getState) => {
     let business = initialState.info.business;
 
     try {
-      const response = await axios.get(`http://localhost:4002/news/latest-articles/${category}`)
+      const response = await axios.get(`news/latest-articles/${category}`)
 
       if (response.data.articles && Array.isArray(response.data.articles)) {
         business = response.data.articles;

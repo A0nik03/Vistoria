@@ -58,7 +58,7 @@ const Register = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post("/user/register", formData, {
+      const response = await axios.post("user/register", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -94,7 +94,7 @@ const Register = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post("/user/login", loginData, {
+      const response = await axios.post("user/login", loginData, {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });

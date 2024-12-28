@@ -10,7 +10,7 @@ const defaultImageUrl =
 
 const PostBlog = ({ panelFunc, panelVal }) => {
   const [image, setImage] = useState(defaultImageUrl);
-  const [active, setActive] = useState(null); // Initially, set active to null
+  const [active, setActive] = useState(null);
   const titleRef = useRef();
   const descriptionRef = useRef();
   const contentRef = useRef();
@@ -31,7 +31,6 @@ const PostBlog = ({ panelFunc, panelVal }) => {
     { value: "Politics", label: "Politics" },
   ];
 
-  // Handle image change
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       const reader = new FileReader();
@@ -40,9 +39,9 @@ const PostBlog = ({ panelFunc, panelVal }) => {
     }
   };
 
-  // Handle category change
+
   const handleCategoryChange = (selectedOption) => {
-    setActive(selectedOption.value); // Update active state when category is selected
+    setActive(selectedOption.value);
   };
 
   const handleSubmit = async (e) => {
@@ -51,7 +50,7 @@ const PostBlog = ({ panelFunc, panelVal }) => {
     if (
       !titleRef.current.value ||
       !contentRef.current.value ||
-      !active || // Make sure active (category) is selected
+      !active || 
       !descriptionRef.current.value
     ) {
       alert("Please fill in all required fields.");
@@ -62,7 +61,7 @@ const PostBlog = ({ panelFunc, panelVal }) => {
     formData.append("title", titleRef.current.value);
     formData.append("description", descriptionRef.current.value);
     formData.append("content", contentRef.current.value);
-    formData.append("category", active); // Use the active state for category
+    formData.append("category", active);
     formData.append("source", sourceRef.current.value);
     if (imageRef.current.files[0]) {
       formData.append("coverImage", imageRef.current.files[0]);
@@ -70,7 +69,7 @@ const PostBlog = ({ panelFunc, panelVal }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4002/blog/",
+        "blog/",
         formData,
         {
           headers: {
@@ -85,7 +84,7 @@ const PostBlog = ({ panelFunc, panelVal }) => {
         titleRef.current.value = "";
         descriptionRef.current.value = "";
         contentRef.current.value = "";
-        setActive(null); // Reset the active category after posting
+        setActive(null);
         sourceRef.current.value = "";
         imageRef.current.value = "";
       } else {

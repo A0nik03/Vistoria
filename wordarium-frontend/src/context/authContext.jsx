@@ -28,7 +28,7 @@ const AuthProvider = ({ children }) => {
   const handleLogout = async () => {
     authFunc(null);
     try {
-      const response = await axios.get("/user/signout");
+      const response = await axios.get("user/signout");
       if (response.statusCode === 200) {
         localStorage.removeItem("userData");
         toast.success("Logout Successful!");
