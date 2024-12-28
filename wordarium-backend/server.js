@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const Blog = require("./models/blog");
 const userRoutes = require("./routes/userRouter");
 const blogRoutes = require("./routes/blogRouter");
 const newsRoutes = require("./routes/newsRouter");
@@ -23,11 +22,9 @@ mongoose
     process.exit(1);
   });
 
-app.set("view engine", "ejs");
-app.set("views", path.resolve("./views"));
 
 const corsOptions = {
-  origin: "http://localhost:5173" || "https://vistoria-frontend.vercel.app/",
+  origin: "https://vistoria-frontend.vercel.app/" || "http://localhost:5173",
   credentials: true,
 };
 
