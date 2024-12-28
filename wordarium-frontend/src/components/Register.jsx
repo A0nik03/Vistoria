@@ -3,7 +3,7 @@ import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { toast} from "react-toastify";
-import axios from "../utils/userAxios";
+import instance from "../utils/userAxios";
 import { AuthContext } from "../context/authContext";
 import NavBar from "./NavBar";
 
@@ -58,7 +58,7 @@ const Register = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post("user/register", formData, {
+      const response = await instance.post("user/register", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -94,7 +94,7 @@ const Register = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post("user/login", loginData, {
+      const response = await instance.post("user/login", loginData, {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
