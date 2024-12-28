@@ -5,7 +5,7 @@ import ContactUs from "./pages/ContactUs";
 import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import SeeAllBlogs from "./components/SeeAllBlogs";
-import Register from "./components/register.jsx";
+import Register from "./components/register";
 
 const App = () => {
   return (
