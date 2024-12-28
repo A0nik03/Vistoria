@@ -39,7 +39,6 @@ const PostBlog = ({ panelFunc, panelVal }) => {
     }
   };
 
-
   const handleCategoryChange = (selectedOption) => {
     setActive(selectedOption.value);
   };
@@ -50,7 +49,7 @@ const PostBlog = ({ panelFunc, panelVal }) => {
     if (
       !titleRef.current.value ||
       !contentRef.current.value ||
-      !active || 
+      !active ||
       !descriptionRef.current.value
     ) {
       alert("Please fill in all required fields.");
@@ -68,15 +67,12 @@ const PostBlog = ({ panelFunc, panelVal }) => {
     }
 
     try {
-      const response = await axios.post(
-        "blog/",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.post("blog/", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      });
       if (response.status === 201) {
         alert("Blog Posted Successfully!");
         GetUserBlogs();

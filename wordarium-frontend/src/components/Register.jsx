@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
-import { toast} from "react-toastify";
+import { toast } from "react-toastify";
 import instance from "../utils/userAxios";
 import { AuthContext } from "../context/authContext";
 import NavBar from "./NavBar";
@@ -60,6 +60,7 @@ const Register = () => {
     try {
       const response = await instance.post("user/register", formData, {
         headers: { "Content-Type": "multipart/form-data" },
+        withCredentials: true,
       });
 
       if (response.status === 201) {
@@ -178,7 +179,10 @@ const Register = () => {
             <h2 className="text-xl md:text-2xl font-bold text-orange-600 mb-6">
               {login ? "Login" : "Sign Up"}
             </h2>
-            <form onSubmit={login ? handleLogin : handleFormSubmit} className="space-y-4">
+            <form
+              onSubmit={login ? handleLogin : handleFormSubmit}
+              className="space-y-4"
+            >
               {/* Profile Upload for Registration */}
               {!login && (
                 <div className="text-center">
