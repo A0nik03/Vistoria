@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import SeeAllBlogs from "./components/SeeAllBlogs";
 import Register from "./components/Register"
+import Settings from "./pages/Settings";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/settings" element={<Settings />} />
         <Route path="/seeAll" element={<SeeAllBlogs />} />
         <Route path="/BlogDetail" element={<BlogDetails />} />
       </Routes>
