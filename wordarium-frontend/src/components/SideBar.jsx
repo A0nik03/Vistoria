@@ -19,7 +19,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`h-screen w-64 p-5 flex flex-col bg-dark-600 fixed right-0 top-0 z-50 transform transition-transform duration-500 ease-out ${active ? 'translate-x-0' : 'translate-x-full'}`}
+      className={`h-screen w-64 overflow-y-auto scrollbar-hide p-5 flex flex-col bg-dark-600 fixed right-0 top-0 z-50 transform transition-transform duration-500 ease-out ${active ? 'translate-x-0' : 'translate-x-full'}`}
       style={{ backgroundColor: "rgba(43, 42, 69, 0.85)" }}
     >
       <div className="flex flex-col items-center mb-8">
