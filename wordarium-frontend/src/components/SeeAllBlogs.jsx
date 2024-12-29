@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { BlogContext } from "../context/blogContext";
 import NavBar from "./NavBar";
 import { useLocation, useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 const SeeAllBlogs = () => {
   const { mustBlog, weeklyBlog } = useContext(BlogContext);
@@ -109,6 +110,7 @@ const SeeAllBlogs = () => {
           )}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

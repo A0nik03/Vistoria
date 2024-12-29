@@ -1,7 +1,6 @@
 import React from "react";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
 
 const ContactUs = () => {
   return (
@@ -101,8 +100,6 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 };

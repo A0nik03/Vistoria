@@ -6,6 +6,7 @@ import { AuthContext } from "../context/authContext";
 import moment from "moment";
 import Comments from "./Comments";
 import { ToastContainer } from "react-toastify";
+import Footer from "./Footer";
 
 const BlogDetails = () => {
   const { auth } = useContext(AuthContext);
@@ -115,6 +116,7 @@ const BlogDetails = () => {
       <div className="relative z-10 w-full bg-gray-900 text-white pt-10">
         <Comments id={blogData._id} auth={auth} />
       </div>
+      <Footer/>
     </div>
   );
 };
