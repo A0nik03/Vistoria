@@ -46,8 +46,10 @@ const MustRead = () => {
             mustBlog &&
             mustBlog.length > 1 && (
               <div className="hidden sm:block w-full lg:w-[60%] cursor-pointer hover:bg-white mt-4 transition-all duration-300 rounded-md shadow-md hover:shadow-lg">
-                <div className="h-[40vh] w-full rounded-t-md relative overflow-hidden">
+                <div
                   onClick={() => handleCardClick(1)}
+                  className="h-[40vh] w-full rounded-t-md relative overflow-hidden"
+                >
                   <img
                     src={
                       mustBlog[1]?.urlToImage ||
