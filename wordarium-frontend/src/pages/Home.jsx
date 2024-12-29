@@ -4,7 +4,6 @@ import YourBlog from "../components/YourBlog";
 import LatestArticles from "../components/LatestArticles";
 import Weekly from "../components/Weekly";
 import MustRead from "../components/MustRead";
-import Footer from "../components/Footer";
 import { BlogContext } from "../context/blogContext";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/authContext";
@@ -61,7 +60,6 @@ const Home = () => {
       {info && <MustRead data={info.business} />}
       
       <Weekly />
-      <Footer />
     </div>
   );
 };
