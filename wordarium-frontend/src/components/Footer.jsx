@@ -7,7 +7,7 @@ import { MdEmail } from "react-icons/md";
 const Footer = () => {
   const tabs = ["About", "Contact Us" ,"FAQ"];
   return (
-    <div className="h-auto w-full bg-[#2a2a42] py-20">
+    <div className="h-auto w-full bg-gradient-to-br from-[#1a1a2e] to-[#16213e] py-20">
       <div className="w-[90%] lg:w-[75%] mx-auto flex flex-col items-center">
         <h1 className="text-4xl md:text-6xl text-white font-black tracking-wider text-center">
           Subscribe to our
@@ -26,7 +26,7 @@ const Footer = () => {
             placeholder="Enter Your Email"
           />
           <div className="w-[20%] h-full flex justify-center items-center">
-            <div className="bg-[#2a2a42] h-10 md:h-[80%] w-10 ml-10 md:w-[80%] rounded-md flex justify-center items-center">
+            <div className="bg-gradient-to-br from-[#1a1a2e] to-[#16213e] h-10 md:h-[80%] w-10 ml-10 md:w-[80%] rounded-md flex justify-center items-center">
               <MdEmail size={30} md={50} color="white" />
             </div>
           </div>

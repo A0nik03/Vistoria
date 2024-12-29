@@ -113,7 +113,7 @@ const BlogDetails = () => {
           </div>
         </div>
       </div>
-      <div className="relative z-10 w-full bg-gray-900 text-white pt-10">
+      <div className="relative z-10 w-full bg-gradient-to-br from-[#1a1a2e] to-[#16213e] text-white pt-10">
         <Comments id={blogData._id} auth={auth} />
       </div>
       <Footer/>

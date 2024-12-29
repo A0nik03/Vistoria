@@ -78,7 +78,7 @@ const Comments = ({ id, auth }) => {
   }, [id]);
 
   return (
-    <div className="w-full sm:w-[80%] mt-auto mx-auto bg-gray-900 bg-opacity-80 backdrop-blur-md p-5 rounded-t-xl">
+    <div className="w-full sm:w-[80%] mt-auto mx-auto bg-gradient-to-br from-[#1a1a2e] to-[#16213e] bg-opacity-80 backdrop-blur-md p-5 rounded-t-xl">
 
       <div className="max-w-full">
         <div className="flex justify-between items-center mb-4">
