@@ -104,7 +104,7 @@ const Sidebar = () => {
         <div className="flex flex-col pb-14 gap-4 mt-auto">
           <Link
             to={"/register"}
-            className="w-full text-lg font-medium text-white text-center py-2 hover:scale-[1.05] bg-[#4c4a75] rounded-lg cursor-pointer"
+            className="w-full text-lg font-medium text-white text-center py-2 hover:scale-[1.05] bg-[#403e65] rounded-lg cursor-pointer"
           >
             Login
           </Link>

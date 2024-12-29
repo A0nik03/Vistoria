@@ -7,7 +7,7 @@ const Settings = () => {
     <div className="min-h-screen bg-[#f5f4f0]">
       <NavBar />
       
-      <div className="bg-[#2b2a45] text-white py-12 px-6 md:px-16">
+      <div className="bg-gradient-to-br from-[#1a1a2e] to-[#16213e] text-white py-12 px-6 md:px-16">
         <div className="max-w-7xl mx-auto text-center md:text-left">
           <h1 className="text-4xl md:text-5xl font-bold">Settings</h1>
           <p className="text-lg mt-4 leading-8">
