@@ -13,13 +13,18 @@ const Weekly = () => {
     navigate("/seeAll", { state: { source: "highlights" } });
   };
 
+  const handleCardClick = (index) => {
+    navigate("/BlogDetail", { state: { blogData: weeklyBlog[index] } });
+  };
+
   useEffect(() => {
     setIsLoading(!(weeklyBlog && weeklyBlog.length > 0));
   }, [weeklyBlog]);
 
-  const renderCard = (data) => (
+  const renderCard = (data,index) => (
     <div
       key={data?.id}
+      onClick={()=>{handleCardClick(index)}}
       className="relative min-w-[70vw] md:min-w-[30vw] lg:min-w-[20vw] h-[40vh] overflow-hidden group cursor-pointer transition-transform duration-300 hover:z-10 hover:scale-[1.1]"
     >
       <img
@@ -67,7 +72,7 @@ const Weekly = () => {
                   <Skeleton width="100%" height="100%" />
                 </div>
               ))
-          : weeklyBlog.map((blog) => renderCard(blog))}
+          : weeklyBlog.map((blog,index) => renderCard(blog,index))}
       </div>
     </div>
   );

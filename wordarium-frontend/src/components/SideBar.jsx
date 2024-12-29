@@ -6,6 +6,8 @@ import { MdContactless } from "react-icons/md";
 import { FaUserCircle, FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
+import { FaQuestionCircle } from "react-icons/fa";
+
 
 const Sidebar = () => {
   const { auth, handleLogout } = useContext(AuthContext);
@@ -76,6 +78,15 @@ const Sidebar = () => {
         >
           <MdContactless size={30} />
           Contact Us
+        </Link>
+
+        <Link
+          to="/faq"
+          onClick={() => setActive(true)}
+          className={`text-xl font-medium text-white border-t-[0.5px] border-b-[0.5px] p-3 w-full flex gap-2 items-center hover:bg-[#232238]`}
+        >
+          <FaQuestionCircle size={30} />
+          FAQ
         </Link>
       </div>
 
