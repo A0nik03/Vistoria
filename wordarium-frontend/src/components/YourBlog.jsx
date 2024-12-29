@@ -62,7 +62,7 @@ const YourBlog = () => {
                   <div className="absolute inset-0 flex justify-center items-center">
                     <h1 className="text-white text-5xl sm:text-4xl font-extrabold text-center leading-snug tracking-wide drop-shadow-lg">
                       Start <span className="text-yellow-400">Creating</span>{" "}
-                      Blog Posts
+                      News Posts
                     </h1>
                   </div>
                 </div>
