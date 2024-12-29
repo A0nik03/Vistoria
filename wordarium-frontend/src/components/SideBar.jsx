@@ -94,14 +94,14 @@ const Sidebar = () => {
         <div className="mt-auto">
           <button
             onClick={handleLogout}
-            className="text-xl mt-4 font-medium text-white p-3 pb-10 w-[98%] flex gap-2 items-center"
+            className="text-xl mt-4 font-medium text-white p-3 pb-14 w-[98%] flex gap-2 items-center"
           >
             <FaSignOutAlt size={30} />
             Logout
           </button>
         </div>
       ) : (
-        <div className="flex flex-col pb-10 gap-4 mt-auto">
+        <div className="flex flex-col pb-14 gap-4 mt-auto">
           <Link
             to={"/register"}
             className="w-full text-lg font-medium text-white text-center py-2 hover:scale-[1.05] bg-[#4c4a75] rounded-lg cursor-pointer"
