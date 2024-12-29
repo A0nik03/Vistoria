@@ -124,21 +124,18 @@ const Register = () => {
   };
   return (
     <div
-      className="flex flex-col items-center justify-center min-h-screen bg-cover bg-center"
+      className="flex flex-col items-center justify-center min-h-[150vh] bg-cover bg-center"
       style={{
         backgroundImage:
           'url("https://images.unsplash.com/photo-1635135473157-9c5f7af2f27f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
       }}
     >
-      {/* Navbar */}
       <div className="fixed top-0 w-full">
         <NavBar isTransparent={true} />
       </div>
 
-      {/* Form Container */}
       <div className="w-11/12 max-w-6xl bg-gray-800 bg-opacity-90 rounded-lg shadow-lg p-6 md:p-10 mt-36">
         <div className="flex flex-col md:flex-row md:items-center">
-          {/* Left Panel */}
           <div className="w-full md:w-1/2 p-6 text-white">
             {login ? (
               <>
@@ -174,7 +171,6 @@ const Register = () => {
             )}
           </div>
 
-          {/* Right Panel */}
           <div className="w-full md:w-1/2 bg-white rounded-lg shadow-md p-6">
             <h2 className="text-xl md:text-2xl font-bold text-orange-600 mb-6">
               {login ? "Login" : "Sign Up"}
@@ -183,7 +179,6 @@ const Register = () => {
               onSubmit={login ? handleLogin : handleFormSubmit}
               className="space-y-4"
             >
-              {/* Profile Upload for Registration */}
               {!login && (
                 <div className="text-center">
                   <label className="block">
@@ -212,7 +207,6 @@ const Register = () => {
                 </div>
               )}
 
-              {/* Form Fields */}
               {!login && (
                 <div className="relative">
                   <FaUser className="absolute left-3 top-3 text-[#2b2a45]" />
